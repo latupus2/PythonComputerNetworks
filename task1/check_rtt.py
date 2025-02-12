@@ -8,7 +8,6 @@ def read_file(name):
     with open(name, "r") as file:
         return file.read().splitlines()
 
-
 def get_rtts(domains):
     rtts = []
     for domain in domains:
