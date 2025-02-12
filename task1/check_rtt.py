@@ -6,8 +6,8 @@ import pythonping as pp
 
 def read_file(name):
     with open(name, "r") as file:
-        domains = file.read().splitlines()
-    return domains
+        return file.read().splitlines()
+
 
 def get_rtts(domains):
     rtts = []
