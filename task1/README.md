@@ -5,7 +5,9 @@
 ## Зависимости
 
 Программа использует библиотеку `pythonping`.  
-````pip install pythonping````
+````
+pip install pythonping
+````
 
 ## Использование
 
