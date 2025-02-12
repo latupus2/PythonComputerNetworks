@@ -25,7 +25,7 @@ google.com
 stackoverflow.com
 ````
 
-## output.txt
+## output.csv
 
 На выходе получается один CSV файл, который показывает RTT для каждого сайта в миллисекундах.  
 Пример:
