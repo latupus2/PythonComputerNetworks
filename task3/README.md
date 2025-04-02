@@ -24,7 +24,7 @@ python main.py https://www.askona.ru/podushki/? --count=5 --output=res.scv
 
 ## output.csv
 
-На выходе получается один CSV файл, который содержит поля `["Name", "Type", "Price", "Rating", "Reviews", "Link"]`
+На выходе получается один CSV файл, который содержит поля `["Name", "Type", "Price", "Rating", "Reviews", "Link"]`  
 Пример:  
 
 | Name                       | Type                  | Price | Rating    | Reviews | Link                                                                                                                       |
