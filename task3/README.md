@@ -11,7 +11,7 @@ pip install selenium
 
 ## Использование
 
-```python <link> --count=<count> --output=<output.csv>```
+```python main.py <link> --count=<count> --output=<output.csv>```
 - link — ссылка на страницу с товарами
 - count — количество товаров, которое мы хотим сохранить (по умолчанию 5)
 - output.csv — файл c результатом работы программы (по умолчанию askona_products.csv)
