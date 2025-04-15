@@ -38,15 +38,18 @@ class Database:
     def save_products(self, products):
         with self.get_session() as session:
             for product in products:
-                db_product = Product(
-                    name=product['name'],
-                    type=product['type'],
-                    price=product['price'],
-                    rating=product['rating'],
-                    reviews=product['reviews'],
-                    link=product['link']
-                )
-                session.merge(db_product)
+
+                exists = session.query(Product).filter_by(link=product['link']).first()
+                if not exists:
+                    db_product = Product(
+                        name=product['name'],
+                        type=product['type'],
+                        price=product['price'],
+                        rating=product['rating'],
+                        reviews=product['reviews'],
+                        link=product['link']
+                    )
+                    session.add(db_product)
             session.commit()
             print(f"Saved {len(products)} products to the database")
 

@@ -39,7 +39,7 @@
   ```
  3. Получения данных из БД
   ```
-  curl "http://localhost:8000/products"
+  curl "http://localhost:8000/products?limit=100"
   ```  
 
  Можно использовать адресную строку вашего браузера.  
