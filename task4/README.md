@@ -37,7 +37,7 @@
   ```
   curl "http://localhost:8000/parse?url=https://www.askona.ru/podushki/&count=5"
   ```
- 3. Получения данных из БД
+ 3. Получение данных из БД
   ```
   curl "http://localhost:8000/products?limit=100"
   ```  
