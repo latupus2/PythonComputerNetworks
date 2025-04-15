@@ -1,0 +1,8 @@
+CREATE DATABASE askona_parser;
+CREATE USER askona_user WITH PASSWORD 'password';
+
+ALTER DATABASE askona_parser OWNER TO askona_user;
+GRANT USAGE, CREATE ON SCHEMA public TO askona_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public 
+GRANT ALL PRIVILEGES ON TABLES TO askona_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO askona_user;
