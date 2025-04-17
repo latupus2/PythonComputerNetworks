@@ -19,7 +19,7 @@ class Product(Base):
     rating = Column(String)
     reviews = Column(String)
     link = Column(String, unique=True)
-    parse_date = Column(DateTime, default=datetime.utcnow)
+    parse_date = Column(DateTime)
 
 class Database:
     def __init__(self):
@@ -38,33 +38,41 @@ class Database:
     def save_products(self, products):
         with self.get_session() as session:
             for product in products:
-
-                exists = session.query(Product).filter_by(link=product['link']).first()
-                if not exists:
+                existing_product = session.query(Product).filter_by(link=product['link']).first()
+                if existing_product:
+                    existing_product.name = product['name']
+                    existing_product.type = product['type']
+                    existing_product.price = product['price']
+                    existing_product.rating = product['rating']
+                    existing_product.reviews = product['reviews']
+                    existing_product.parse_date = datetime.utcnow()
+                else:
                     db_product = Product(
                         name=product['name'],
                         type=product['type'],
                         price=product['price'],
                         rating=product['rating'],
                         reviews=product['reviews'],
-                        link=product['link']
+                        link=product['link'],
+                        parse_date=datetime.utcnow()
                     )
                     session.add(db_product)
+
             session.commit()
-            print(f"Saved {len(products)} products to the database")
+            print(f"Saved/updated {len(products)} products")
 
     def get_products(self, limit=10):
         with self.get_session() as session:
             products = session.query(Product).order_by(Product.parse_date.desc()).limit(limit).all()
             return [
                 {
-                    "name": p.name,
-                    "type": p.type,
-                    "price": p.price,
-                    "rating": p.rating,
-                    "reviews": p.reviews,
-                    "link": p.link,
-                    "parse_date": p.parse_date.isoformat()
+                    "name": product.name,
+                    "type": product.type,
+                    "price": product.price,
+                    "rating": product.rating,
+                    "reviews": product.reviews,
+                    "link": product.link,
+                    "parse_date": product.parse_date.isoformat()
                 }
-                for p in products
+                for product in products
             ]
