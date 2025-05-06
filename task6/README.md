@@ -21,7 +21,8 @@
   ```
  5. Запускаем nginx
   ```
-  nginx -c nginx.conf 
+  cd path/to/your/nginx
+  nginx -c path/to/nginx.conf 
   ```  
 
 ---
