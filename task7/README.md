@@ -1,5 +1,5 @@
 # Task6: Askona parser
-Парсер вырезан. База данных и обработчик запросов разделены на два контейнера. Добавлен контейнер nginx для перенаправления запросов с 80 порта.
+Парсер вырезан. База данных и обработчик запросов разделены на два контейнера. Используется nginx для перенаправления запросов с 80 порта. Добавлена блокировка российских ip.
 
 ---
 ## Запуск
@@ -13,20 +13,17 @@
   ```
  3. Собираем образ приложения
   ```
-  docker build -t url_saver_app -f dockerfile_app .
+  docker build -t url_saver_app .
   ```
  4. Запускаем контейнер приложения
   ```
   docker run -d --name app --network askona_network -p 5000:5000 url_saver_app
   ```
- 5. Собираем образ Nginx  
+ 5. Запускаем nginx
   ```
-  docker build -t custom-nginx -f dockerfile_nginx .
-  ```
- 5. Запускаем контейнер nginx
-  ```
-  docker run -d --name nginx --network askona_network -p 80:80 custom-nginx
-  ```  
+  cd path/to/your/nginx
+  nginx -c path/to/nginx.conf 
+  ``` 
 
 ---
 ## Использование
