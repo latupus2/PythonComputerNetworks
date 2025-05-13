@@ -13,21 +13,17 @@
   ```
  3. Собираем образ приложения
   ```
-  docker build -t url_saver_app . -f dockerfile_app .
+  docker build -t url_saver_app .
   ```
  4. Запускаем контейнер приложения
   ```
   docker run -d --name app --network askona_network -p 5000:5000 url_saver_app
   ```
- 5. Собираем образ Nginx
+ 5. Запускаем Nginx
   ```
-  docker build -t my-nginx -f dockerfile_nginx . 
+  ./nginx/nginx -p ./nginx -c ./nginx/nginx.conf 
   ```
- 6. Запускаем контейнер Nginx
-  ```
-  docker run -d -p 80:80 --name my-nginx-container --network askona_network my-nginx
-  ``` 
-
+  
 ---
 ## Использование
  1. Сохранение ссылки
