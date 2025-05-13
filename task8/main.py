@@ -17,7 +17,6 @@ async def save_url(
     url: str = Query(..., description="URL to save"),
 ):
     try:
-        # Создаем mock продукта с URL
         mock_product = {
             "name": "Saved URL",
             "type": "url",
@@ -41,7 +40,6 @@ async def get_urls(
 ):
     try:
         products = db.get_products(limit)
-        # Возвращаем только URLs
         return [{"url": product["link"], "saved_at": product["parse_date"]} for product in products]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
